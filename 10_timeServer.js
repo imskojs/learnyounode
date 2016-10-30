@@ -5,14 +5,13 @@
 // HTTP is used for transferring data while TCP is in charge of setting up a connection 
 //which should be used by HTTP in the communication process. 
 // Without TCP, HTTP cannot function (to be crisp).
-let net = require('net');
+const net = require('net');
 
-let server = net.createServer((socket) => {
-  let date = new Date();
-  let result = formatTime(date);
+const server = net.createServer((socket) => {
+  const date = new Date();
+  const result = formatTime(date);
   socket.write(result);
-  socket.end();
-
+  return socket.end();
 });
 
 server.listen(+process.argv[2]);
@@ -21,18 +20,24 @@ server.listen(+process.argv[2]);
 //  Helper
 //====================================================
 function formatTime(date) {
-  let year = zeroFill(date.getFullYear());
-  let month = zeroFill(date.getMonth() + 1);
-  let day = zeroFill(date.getDate());
-  let hour = zeroFill(date.getHours());
-  let minute = zeroFill(date.getMinutes());
+  const year = zeroFill(date.getFullYear());
+  const month = zeroFill(date.getMonth() + 1);
+  const day = zeroFill(date.getDate());
+  const hour = zeroFill(date.getHours());
+  const minute = zeroFill(date.getMinutes());
 
-  let result = `${year}-${month}-${day} ${hour}:${minute}
+  const result = `${year}-${month}-${day} ${hour}:${minute}
 `;
 
   return result;
 }
 
-function zeroFill(i) {
-  return (i < 10 ? '0' : '') + i;
+function zeroFill(num) {
+  return (num < 10 ? '0' : '') + num;
+  // // Above is the same as below
+  // if(num < 10){
+  //   return '0' + num;
+  // } else {
+  //   return '' + num;
+  // }
 }

@@ -11,10 +11,10 @@
 //====================================================
 //  Answer
 //====================================================
-let fs = require('fs');
-let firstArg = process.argv[2];
-let buf = fs.readFileSync(firstArg);
-let numberOfNewLines = buf.toString().split('\n').length - 1;
+const fs = require('fs');
+const firstArg = process.argv[2];
+const buf = fs.readFileSync(firstArg);
+const numberOfNewLines = buf.toString().split('\n').length - 1;
 console.log(numberOfNewLines);
 
 

@@ -6,18 +6,6 @@
 // 두번째 item은 항상 여러분이 실행하는 program.js파일입니다.
 // 그래서 3번째 index 부터가 저희가 알고있는 인자(argument)이지요.
 
-// Imperative Programming
-
-//====================================================
-//  Imperative Programming
-//====================================================
-var sum = 0;
-for (let i = 2; i < process.argv.length; i++) {
-  sum = sum + Number(process.argv[i]);
-}
-
-console.log(sum);
-
 //====================================================
 //  Functional Programming
 //====================================================
@@ -29,3 +17,12 @@ process.argv.slice(2)
   .forEach(val => console.log(val));
 
 
+//====================================================
+//  Imperative Programming
+//====================================================
+// let sum = 0;
+// for (let i = 2; i < process.argv.length; i++) {
+//   sum = sum + Number(process.argv[i]);
+// }
+
+// console.log(sum);

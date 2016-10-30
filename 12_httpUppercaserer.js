@@ -1,6 +1,6 @@
-let http = require('http');
-let Transform = require('stream').Transform;
-let uppercase = new Transform({
+const http = require('http');
+const Transform = require('stream').Transform;
+const uppercase = new Transform({
   transform(chunk, encoding, done) {
     chunk = chunk.toString();
     done(null, chunk.toUpperCase());
@@ -8,9 +8,8 @@ let uppercase = new Transform({
 });
 http.createServer((req, res) => {
   if (req.method !== 'POST') {
-    return res.end('not POST');
+    return res.end('NOT_POST');
   }
-  console.log("req :::\n", req);
   return req.pipe(uppercase).pipe(res);
     // .on('end', () => {
     //   return res.end();
