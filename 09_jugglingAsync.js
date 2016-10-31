@@ -16,8 +16,8 @@ const promises = urls.map((url) => {
       res.on('end', () => {
         resolve(str);
       });
-    }).on('error', () => {
-      reject();
+    }).on('error', (err) => {
+      reject(err);
     });
   });
 });
@@ -27,6 +27,8 @@ Promise.all(promises)
     array.forEach((val) => {
       console.log(val);
     });
+  }, (err) => {
+    console.log(err);
   });
 
 
